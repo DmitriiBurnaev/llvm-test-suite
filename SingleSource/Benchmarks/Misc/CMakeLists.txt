@@ -29,4 +29,12 @@ set(Source
 if(NOT ARCH STREQUAL "PowerPC" OR NOT TARGET_OS STREQUAL "Darwin")
   list(APPEND Source dt.c)
 endif()
+
+file(GLOB Source RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} *.c *.cpp)
+
+if(ARCH STREQUAL "ARC")
+  list(REMOVE_ITEM Source dt.c)
+  list(REMOVE_ITEM Source courafft.c)
+  list(REMOVE_ITEM Source oourafft.c)
+endif()
 llvm_singlesource()

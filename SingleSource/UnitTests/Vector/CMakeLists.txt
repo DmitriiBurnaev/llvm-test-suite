@@ -12,4 +12,9 @@ if(ARCH STREQUAL "AArch64")
   add_subdirectory(AArch64)
 endif()
 
+file(GLOB Source RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} *.c *.cpp)
+
+if(ARCH STREQUAL "ARC")
+   list(REMOVE_ITEM Source build2.c)
+endif()
 llvm_singlesource(PREFIX "Vector-")

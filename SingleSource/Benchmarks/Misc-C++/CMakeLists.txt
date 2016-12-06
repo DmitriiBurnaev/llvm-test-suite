@@ -1,4 +1,6 @@
-add_subdirectory(Large)
+if(NOT ARCH STREQUAL "ARC")
+    add_subdirectory(Large)
+endif()
 
 list(APPEND LDFLAGS -lm -lstdc++)
 set(FP_ABSTOLERANCE 0.01)
